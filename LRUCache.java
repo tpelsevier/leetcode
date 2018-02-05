@@ -1,7 +1,8 @@
+//Time O(1) Space O(N)
 class LRUCache {
     HashMap<Integer,Node> hm;
-    Node head;
-    Node tail;
+    Node head; //The most outdated
+    Node tail; //The most recent
     int capacity;
     public LRUCache(int capacity) {
         this.hm = new HashMap<>();
@@ -29,8 +30,8 @@ class LRUCache {
         return n.val;
     }
 
-    public void put(int key, int val) {
-        if(hm.get(key) != null){
+    public void put(int key, int val) { //This is why we need hash map data structure
+        if(hm.get(key) != null){ //If the key existed before
             Node n = hm.get(key);
             n.val = val;
             if(n != tail){
@@ -46,25 +47,25 @@ class LRUCache {
                 n.next = null;
                 tail = n;
             }
-        }else{
+        }else{ //If it is a new key
             Node n = new Node(key,val);
-            if(capacity == 0){
+            if(capacity == 0){ //Verify if this LRU cache has enough capacity
                 hm.remove(head.key);
                 head = head.next;
                 capacity ++;
             }
-            if(head == null && tail == null){
+            if(head == null && tail == null){ //If the linked list is null
                 head = n;
             }else{
                 tail.next = n;
                 n.prev = tail;
             }
             tail = n;
-            capacity --;
+            capacity --; // reduce the capacity
             hm.put(key,n);
         }
     }
-
+    //Double linked list class
     class Node{
         int key;
         int val;
