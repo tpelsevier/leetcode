@@ -1,4 +1,4 @@
-//Time O(1) Space O(N)
+//Time O(1)  Space O(N)
 class LFUCache {
     Map<Integer,Integer> vals;
     Map<Integer,Integer> counts;
