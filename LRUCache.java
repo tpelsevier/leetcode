@@ -33,20 +33,9 @@ class LRUCache {
     public void put(int key, int val) { //This is why we need hash map data structure
         if(hm.get(key) != null){ //If the key existed before
             Node n = hm.get(key);
-            n.val = val;
-            if(n != tail){
-                if(n == head){
-                    head = head.next;
-                    head.prev = null;
-                }else{
-                    n.prev.next = n.next;
-                    n.next.prev = n.prev;
-                }
-                tail.next = n;
-                n.prev = tail;
-                n.next = null;
-                tail = n;
-            }
+            get(key);
+            return;
+          }
         }else{ //If it is a new key
             Node n = new Node(key,val);
             if(capacity == 0){ //Verify if this LRU cache has enough capacity
