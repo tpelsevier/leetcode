@@ -4,7 +4,7 @@
   if it is consecutive the gap will initial as 1,then 2 then 3
   plus the gap with the current count
   if consecutive is being interpreted the gap go back to one
-  0,0,1,3,6,9
+  0,0,1,3,6,10
   1,2,3,4,5,6
 */
 class Solution {
