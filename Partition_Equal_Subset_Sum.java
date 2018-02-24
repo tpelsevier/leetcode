@@ -18,6 +18,10 @@ class Solution {
         //dp[sum] == 0 it is false else if combo numbers of sum is even it returns true //because for example
         // 2,1,2,1 the half sum is 3 the combo for this is 4 because first 2,1 and second 2,1 and first 2 plus second 1 and first 1 plus second 1
         //There is a duplicated combo
+        //Assume values:[A,B,C,D] sum(values)/2 = 5
+        // A+ B = 5
+        // C + D = 5
+        // If A + C =5 Then A = D B = C So the numbers are always even to get even partition 
         return dp[sum] == 0 ? false: dp[sum] %2 == 0;
     }
 }
