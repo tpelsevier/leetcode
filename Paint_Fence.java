@@ -13,7 +13,8 @@ class Solution {
                  3 9 24
           because there are first two here contains two same colors
           so number 3 fence can't have 3 color all together so it needs to minus one
-
+          2 *dp[i -1] means i-1 fence and i-2 fence share the same color
+          2*dp[i-2] means i-1 fence and i fence share the same corlor
         */
         for(int i = 3; i<=n;i++){
             dp[i] = (k-1)*(dp[i-1] + dp[i-2]);
