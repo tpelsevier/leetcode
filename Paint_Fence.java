@@ -11,7 +11,7 @@ class Solution {
           Assume color = 3
           fences 1 2 3
                  3 9 24
-          because there are first two here contains two same color
+          because there are first two here contains two same colors
           so number 3 fence can't have 3 color all together so it needs to minus one
 
         */
