@@ -14,7 +14,7 @@ class Solution {
         }
         for(int i = start;i<=9;i++){
             ls.add(i);
-            helper(ls,n-i,k,i+1);
+            helper(ls,n-i,k,i+1);//this value can't be reused
             ls.remove(ls.size()-1);
         }
     }
