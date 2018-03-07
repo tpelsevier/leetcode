@@ -14,7 +14,7 @@ class Solution {
         }
         for(int i = start;i<c.length;i++){
             ls.add(c[i]);
-            helper(c,remain-c[i],i,ls);
+            helper(c,remain-c[i],i,ls); //Since we can reuse the number
             ls.remove(ls.size()-1);
         }
     }
