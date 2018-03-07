@@ -1,4 +1,4 @@
-//Time O(NK) space O(1)
+//Time O(NK) space O(K)
 class Solution {
     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> combine(int n, int k) {
