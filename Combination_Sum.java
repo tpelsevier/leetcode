@@ -1,4 +1,4 @@
-//Time O(N)  Space O(N)
+//Time O(NLogN)  Space O(N)
 class Solution {
     List<List<Integer>> res = new ArrayList<>();
     public List<List<Integer>> combinationSum(int[] candidates , int target) {
