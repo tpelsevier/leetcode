@@ -1,4 +1,4 @@
-//Time O(N) Space O(1)
+//Time O(N) Space O(1) 
 public class Solution {
     public int maxProfit(int[] prices) {
         int total = 0;
