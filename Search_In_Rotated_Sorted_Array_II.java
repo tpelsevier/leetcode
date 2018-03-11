@@ -19,7 +19,7 @@ class Solution {
                 //else it located between mid and r
                 else l = mid +1;
             }
-            //else should minus 
+            //else should be move one index to the left
             else r--;
         }
         return false;
