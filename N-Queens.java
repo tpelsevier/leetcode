@@ -12,7 +12,7 @@ class Solution {
             addSolution(res,rows);
             return;
         }
-        for(int i = 0; i<rows.length;i++){
+        for(int i = 0; i<rows.length;i++){ //i means the col pos
             rows[pos] = i;
             if(isValid(rows,pos)) helper(res,rows,pos+1); //If put the col pos in this row is valid then continue;
         }
