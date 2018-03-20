@@ -1,4 +1,4 @@
-//Insert Time (K*L) Space(K*L) 
+//Insert Time (K*L) Space(K*L)
 class MapSum {
     Node root = new Node();
     Set<String> set = new HashSet<>();
@@ -13,7 +13,7 @@ class MapSum {
         for(Character c: key.toCharArray()){
             if(t.node[c-'a'] == null) t.node[c-'a'] = new Node();
             t = t.node[c-'a'];
-            if(existed) t.sum = val;
+            if(existed) t.sum = val; //If this word existed, Change the node val to current val
             else t.sum += val;
         }
         set.add(key);
