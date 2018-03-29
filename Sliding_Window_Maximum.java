@@ -26,9 +26,10 @@ class Solution {
         for(int i = 0; i < n;i++){
             //remove the numbers out range K
             while(!dq.isEmpty() && dq.peek() < i-k+1) dq.poll();
-            //compare the current number to the previous number
+            //compare the current number to the previous number, if it is bigger than the previous one,remove
             while(!dq.isEmpty() && nums[dq.peekLast()] < nums[i]) dq.pollLast();
             dq.offer(i);
+            //Since there will be one element added after index K
             if(i >= k-1) res[ri++] = nums[dq.peek()];
         }
         return res;
