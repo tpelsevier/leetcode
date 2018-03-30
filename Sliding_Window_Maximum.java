@@ -1,4 +1,3 @@
-
 //Time O(N * (N-K+1)) Space O(1)
 class Solution {
     public int[] maxSlidingWindow(int[] nums, int k) {
