@@ -23,3 +23,25 @@ class Solution {
         return false;
     }
 }
+//Time O(N) Space O(Math.min(N,K))
+class Solution {
+    public boolean containsNearbyAlmostDuplicate(int[] nums, int k, int t) {
+        if(k < 1 || t < 0) return false;
+        int n = nums.length;
+        Map<Long,Long> map = new HashMap<>();
+        for(int i = 0; i < n;i++){
+            long id = getId((long)nums[i],t+1);
+            if(map.containsKey(id)) return true;
+            //Check neightbor bucket
+            if ((map.containsKey(id - 1) && Math.abs(nums[i] - map.get(id - 1)) < t+1)
+                || map.containsKey(id + 1) && Math.abs(nums[i] - map.get(id + 1)) < t+1)
+                return true;
+            map.put(id,(long)nums[i]);
+            if(i>=k)map.remove(getId(nums[i-k],t+1));
+        }
+        return false;
+    }
+    private long getId(long x, int w){
+        return x < 0? x+1/w-1:x/w;
+    }
+}
