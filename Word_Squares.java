@@ -21,9 +21,10 @@ class Solution {
             for(int i = 0; i < 26;i++){
                 if(currow.cs[i] != null && curcol.cs[i] != null){
                   //If the rows[row] position has value in children as i
-                  //Move to the children node same as col 
+                  //Move to the children node same as col
                     rows[row] = currow.cs[i];
                     rows[col] = curcol.cs[i];
+                    //Use a new node for col, since moving in the same row
                     helper(row,col+1,rows);
                 }
             }
