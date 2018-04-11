@@ -13,7 +13,7 @@ class Solution {
         int[] maxLeft = new int[n];
         int[] minRight = new int[n];
         maxLeft[0] = arr[0];
-        for(int i = 1,j = n-2; i < n && j >= 0;j--,i++){
+        for(int i = 1; i < n;i++){
             maxLeft[i] = Math.max(maxLeft[i-1],arr[i]);
         }
         minRight[n-1] = arr[n-1];
