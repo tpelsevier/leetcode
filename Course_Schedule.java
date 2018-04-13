@@ -1,4 +1,4 @@
-//Time O(V+E)
+//Time O(V+E) Space O(N)
 class Solution {
     public boolean canFinish(int numCourses, int[][] prerequisites) {
         int[] idr = new int[numCourses];
@@ -7,7 +7,7 @@ class Solution {
         }
         Queue<Integer> queue = new ArrayDeque<>();
         for(int i = 0; i < idr.length;i++){
-            if(idr[i] == 0) queue.offer(i); //Find how many prerequisites the course has 
+            if(idr[i] == 0) queue.offer(i); //Find how many prerequisites the course has
         }
         while(!queue.isEmpty()){
             int pre = queue.poll();
