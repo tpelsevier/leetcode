@@ -15,7 +15,7 @@ class Solution {
                 int py = pos[1] + dir[1];
                 int p2 = px*n + py;
                 if(px < 0 || py < 0 || px >= m || py >= n || roots[p2] == -1) continue;
-                int p2r =. findIsland(roots,p2);
+                int p2r = findIsland(roots,p2);
                 if(p != p2r){ //If roots of two pos is different
                     roots[p] = p2r; //Change pos root to the root of it's neightbor pos
                     p = p2r;  //change root pos to new roots pos
