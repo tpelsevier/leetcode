@@ -1,4 +1,4 @@
-//Time O(M*N)
+//Time O(M*N) Space O(1)
 class Solution {
     public boolean isMatch(String s, String p) {
         if(p.equals("*")) return true;
