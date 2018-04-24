@@ -4,7 +4,7 @@ class Solution {
         int[] i = new int[256];
         int max = 0,count = 0;
         for(int st = 0,e = 0;e<s.length();e++){
-            if(i[s.charAt(e)]++ == 0) count ++; //This means there a new character come in
+            if([s.charAt(e)]++ == 0) count ++; //This means there a new character come in
             if(count >= k) {
                 while(--i[s.charAt(st++)] > 0);
                 count--;
