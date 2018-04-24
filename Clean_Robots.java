@@ -1,3 +1,4 @@
+//Reference : http://www.1point3acres.com/bbs/thread-289514-1-1.html#postmessage_3399284
 interface Robot {
     Stack<String> actions = new Stack<>(); // store completed actions. 1point3acres.com/bbs
     Stack<String> plans = new Stack<>();    // store future actions.
