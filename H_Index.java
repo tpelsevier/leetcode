@@ -1,9 +1,13 @@
+/*
+  At least N citations on N paper
+*/
+
 //Time O(NlogN) Space O(1)
 class Solution {
     public int hIndex(int[] citations) {
         Arrays.sort(citations);
         int res = 0;
-        while(res < citations.length && res < citations[i]) res++;
+        while(res < citations.length && res < citations[citations.length-1-res]) res++;
         return res;
     }
 }
