@@ -1,4 +1,4 @@
-//Time O(KLogN) Space O(K) 
+//Time O(KLogK) Space O(K) 
 class Solution {
     public List<int[]> kSmallestPairs(int[] nums1, int[] nums2, int k) {
         List<int[]> res = new ArrayList<>();
