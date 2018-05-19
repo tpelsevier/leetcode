@@ -6,22 +6,25 @@ COLORS 2 = UNSAFE
 */
 class Solution {
     public List<Integer> eventualSafeNodes(int[][] graph) {
-        List<Integer> res = new ArrayList<>();
-        if(graph.length == 0 || graph == null) return res;
         int[] colors = new int[graph.length];
-        for(int i = 0;i<graph.length;i++){
-            if(graph[i].length == 0 || dfs(i,graph,colors)) res.add(i);
-            colors[i] = graph[i].length == 0? 1:colors[i];
+        List<Integer> res = new ArrayList<>();
+        for(int i = 0; i < graph.length;i++){
+            if(colors[i] == 2) continue;
+            if(graph[i].length == 0 || colors[i] == 1) res.add(i);
+            else{
+                if(dfs(i,graph,colors)) res.add(i);
+            }
         }
         return res;
     }
-    private boolean dfs(int s, int[][] graph, int[] colors){
-        colors[s] = 2;
-        for(int node: graph[s]){
-            if(colors[node] == 1) continue;
-            if(colors[node] == 2 || !dfs(node,graph,colors)) return false;
+    private boolean dfs(int start, int[][] graph,int[] colors){
+        if(colors[start] != 0) return colors[start] == 1;
+        colors[start] = 2;
+        for(int next: graph[start]){
+            if(colors[next] == 1) continue;
+            if(colors[next] == 2 || !dfs(next,graph,colors)) return false;
         }
-        colors[s] = 1;
+        colors[start] =1;
         return true;
     }
 }
