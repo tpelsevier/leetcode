@@ -3,8 +3,6 @@ class Solution {
     public int numBusesToDestination(int[][] routes, int S, int T) {
         if(S==T) return 0;
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
-        Queue<Integer> queue = new LinkedList<>();
-        HashSet<Integer> visted = new HashSet<>();
         for(int i = 0; i < routes.length;i++){
             for(int j = 0;j < routes[i].length;j++){
                 ArrayList<Integer> buses = map.getOrDefault(routes[i][j],new ArrayList<>());
@@ -13,7 +11,8 @@ class Solution {
             }
         }
         int res = 0;
-
+        Queue<Integer> queue = new LinkedList<>();
+        HashSet<Integer> visted = new HashSet<>();
         queue.offer(S);
         while(!queue.isEmpty()){
             int size = queue.size();
