@@ -7,7 +7,7 @@ class Solution {
             String r1 = findRoot(pair[0]);
             String r2 = findRoot(pair[1]);
             if(!r1.equals(r2)) map.put(r1,r2);
-        }
+        }    HashMap<String,String> map = new HashMap<>();
         for(int i = 0; i < words2.length;i++){
             String r1 = findRoot(words1[i]);
             String r2 = findRoot(words2[i]);
