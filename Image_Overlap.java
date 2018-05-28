@@ -32,7 +32,7 @@ class Solution {
                         for (int j2 = 0; j2 < N; ++j2)
                             if (B[i2][j2] == 1)
                               /*Add up the other overlap area that has
-                              same move for current pos
+                              same move 
                               */
                                 count[i-i2 +N][j-j2 +N] += 1;
 
