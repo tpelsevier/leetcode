@@ -1,8 +1,8 @@
-//Time O(Nk^2) Space O(N^2)
+//Time O(Nk^2) Space O(NK)
 class Solution {
     public double largestSumOfAverages(int[] A, int K) {
         int N = A.length;
-        double [][] dp = new double[N+1][N+1];
+        double [][] dp = new double[N+1][K+1];
         double sum = 0;
         for(int i = 0; i < N; i++){
             sum+=A[i];
