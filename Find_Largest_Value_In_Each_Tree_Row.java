@@ -7,7 +7,7 @@
  *     TreeNode(int x) { val = x; }
  * }
  */
- //Time O(N) Space (log2(N))
+ //Time O(N) Space O(1)
 class Solution {
     public List<Integer> largestValues(TreeNode root) {
         List<Integer> ans = new ArrayList<>();
