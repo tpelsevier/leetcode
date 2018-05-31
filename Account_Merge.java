@@ -2,7 +2,7 @@ class Solution {
     public List<List<String>> accountsMerge(List<List<String>> accounts) {
         //Build Graph
         Map<String,HashSet<String>> graph = new HashMap<>();
-        for(List<String> account: accounts){
+        for(List<String> account: accounts){ //O(NM)
             String firstEmail = account.get(1);
             for(int i = 1;i < account.size();i++){
                 String email = account.get(i);
@@ -28,7 +28,7 @@ class Solution {
         }
         return ans;
     }
-    //DFS Traversal
+    //DFS Traversal O(V+E)
     private void dfs(Map<String,HashSet<String>> graph, HashSet<String> visited, String email, List<String> ans){
         ans.add(email);
         visited.add(email);
@@ -39,7 +39,7 @@ class Solution {
             }
         }
     }
-    //BFS Traversal
+    //BFS Traversal O(V+E)
     private void bfs(Map<String,HashSet<String>> graph, HashSet<String> visited, String start, List<String> ans){
         Queue<String> queue = new LinkedList<>();
         queue.offer(start);
