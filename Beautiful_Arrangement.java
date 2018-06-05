@@ -19,3 +19,24 @@ class Solution {
 
     }
 }
+//Back tracking solution
+class Solution {
+    int count = 0;
+    public int countArrangement(int N) {
+        helper(0,new boolean[N+1],N);
+        return count;
+    }
+    private void helper(int n, boolean[] visited, int N){
+        if(n == N){
+            count ++;
+            return;
+        }
+        for(int i = 1; i <= N;i++){
+            if(visited[i] || (i % (n+1) != 0 && (n+1)%i != 0))continue;
+            visited[i] = true;
+            helper(n+1,visited,N);
+            visited[i] = false;
+        }
+
+    }
+}
