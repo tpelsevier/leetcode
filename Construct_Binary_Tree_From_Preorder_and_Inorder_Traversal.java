@@ -1,6 +1,9 @@
-//Time O(N) Space O(N)
-//Pre = [3,9,20,15,7]
-//In = [9,3,15,20,7]
+/*Time O(N) Space O(N)
+Pre = [3,9,20,15,7]
+In = [9,3,15,20,7]
+   
+*/
+
 class Solution {
     Map<Integer,Integer> map = new HashMap<>();
     public TreeNode buildTree(int[] preorder, int[] inorder) {
