@@ -25,5 +25,21 @@ class Solution {
         }
         return l == 1? 0:l;
     }
-
+}
+//Time O(N) Space O(N)
+class Solution {
+    public int longestMountain(int[] A) {
+        int n = A.length;
+        int[] left = new int[n];
+        int[] right = new int[n];
+        for(int i = 1;i<n-1;i++){
+            if(A[i] > A[i-1]) left[i] = left[i-1]+1;
+        }
+        int max = 0;
+        for(int i = n-2; i >= 1;i--){
+            if(A[i] > A[i+1] ) right[i] = right[i+1]+1;
+            if(left[i] > 0 &&right[i]> 0) max = Math.max(right[i]+left[i]+1,max);
+        }
+        return max;
+    }
 }
