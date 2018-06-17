@@ -1,3 +1,4 @@
+//Time O(LogN) Space O(1)
 class Solution {
     public boolean circularArrayLoop(int[] nums) {
         if(nums.length > 0){
