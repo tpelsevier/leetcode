@@ -8,6 +8,7 @@ class Solution {
         int steps = 0;
         Set<String> temp;
         while(!begin.isEmpty() && !end.isEmpty()){
+          //Swap between two seats
             if(begin.size() > end.size()){
                 temp = begin;
                 begin = end;
