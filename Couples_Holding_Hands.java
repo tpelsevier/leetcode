@@ -11,7 +11,7 @@ class Solution {
         for(int i = 0; i < n;i+=2){
             int x = row[i];
             int half = x^1; // (0 1) (2 3)
-             if(row[i+1] == half) continue;
+            if(row[i+1] == half) continue;
             count++;
             int ind = pos[half]; //Find the index of the half of row i
             pos[row[i+1]] = ind; //Set the index of current value of at i+1 to the pos of the half
