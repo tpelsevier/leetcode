@@ -1,32 +1,38 @@
 //123121
 //Time O(K^N)  Space O(K^N)
 class Solution {
+    /*
+        @param n means password length is n
+        @param k means password is form from 0 to k-1
+    */
     public String crackSafe(int n, int k) {
         int total = (int) Math.pow(k,n);
         StringBuilder sb = new StringBuilder();
-        for(int i = 0; i < n;i++) sb.append('0');
-        Set<String> set = new HashSet<String>(){{
-            add(sb.toString());
+        for(int i = 0; i < n;i ++){
+            sb.append("0");
+        }
+        HashSet<String> set = new HashSet<String>(){{
+           add(sb.toString());
         }};
-        dfs(n,k,total,set,sb);
+        dfs(sb,set,total,n,k);
         return sb.toString();
     }
-    boolean dfs(int n, int k, int total, Set<String> visted, StringBuilder sb){
-        if(visted.size() == total) return true;
-        String prev = sb.substring(sb.length()-n+1,sb.length());
-        for(int i = 0;i<k;i++){
-            String next = prev+i;
-            if(!visted.contains(next)){
-                visted.add(next);
+    private boolean dfs(StringBuilder sb, HashSet<String> visited, int total, int n, int k){
+        if(visited.size() == total) return true;
+        String prev = sb.substring(sb.length()-n+1);
+        for(int i = 0; i < k;i++){
+            String next = prev + i;
+            if(visited.add(next)){
                 sb.append(i);
-                if(dfs(n,k,total,visted,sb)) return true;
-                else{
+                if(dfs(sb,visited,total,n,k)) return true;
+                else {
                     sb.deleteCharAt(sb.length()-1);
-                    visted.remove(next);
+                    visited.remove(next);
                 }
-
             }
         }
+
         return false;
     }
+
 }
