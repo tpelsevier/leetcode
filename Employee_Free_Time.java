@@ -7,7 +7,11 @@
  *     Interval(int s, int e) { start = s; end = e; }
  * }
  */
+<<<<<<< HEAD
  //Time O(NlogN) Space O(N)
+=======
+ //Time O(NLogN) Space O(N)
+>>>>>>> lc 759
 class Solution {
     public List<Interval> employeeFreeTime(List<List<Interval>> schedule) {
         List<Integer> starts = new ArrayList<>();
