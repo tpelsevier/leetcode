@@ -44,3 +44,36 @@ class Solution {
         if(child.right != null) find(child.right,child,level+1,counter,map);
     }
 }
+
+//Time O(N) Space O(N)
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode(int x) { val = x; }
+ * }
+ */
+class Solution {
+    public TreeNode subtreeWithAllDeepest(TreeNode root) {
+        HashMap<TreeNode,int[]> map = new HashMap<>();
+        int left = 0, right = 0;
+        if(root.left != null) left = findDepth(root.left,map);
+        if(root.right != null) right = findDepth(root.right,map);
+        return left == right? root:left > right?dfs(root.left,map):dfs(root.right,map);
+    }
+    private TreeNode dfs(TreeNode root,Map<TreeNode,int[]> map){
+        int[] val = map.get(root);
+        if(val[0] == val[1]) return root;
+        return val[0] > val[1]? dfs(root.left,map):dfs(root.right,map);
+    }
+    private int findDepth(TreeNode root,Map<TreeNode,int[]> map){
+        if(root == null) return 0;
+        int left = 0,right = 0;
+        if(root.left != null) left = findDepth(root.left,map);
+        if(root.right != null) right = findDepth(root.right,map);
+        map.put(root,new int[]{left,right});
+        return Math.max(left,right)+1;
+    }
+}
