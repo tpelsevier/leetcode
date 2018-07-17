@@ -1,100 +1,46 @@
-//Reference : http://www.1point3acres.com/bbs/thread-289514-1-1.html#postmessage_3399284
-interface Robot {
-    Stack<String> actions = new Stack<>(); // store completed actions. 1point3acres.com/bbs
-    Stack<String> plans = new Stack<>();    // store future actions.
-    int[] curPosition = new int[2]; // mark the position in the robot's view
-    Set<String> visited = new HashSet<>(); // store the visited position
-    // actions
-
-    // returns true if next cell is open and robot moves into the cell.
-    // returns false if next cell is obstacle and robot stays on the current cell.
-    boolean Move();
-    // Robot will stay on the same cell after calling Turn*. k indicates hown many turns to perform.
-    void TurnLeft(int k);.
-    void TurnRight(int k);
-    // Clean the current cell.
-    void Clean();
-    boolean Move(Direction d);
-
-    // keep the facing direction when moving left / right. from: 1point3acres.com/bbs
-    // String[] actions = new String[]{"Forward", "Left", "Right"};
-    boolean MoveForward(){
-        // actions.push("Forward");
-
-        boolean success = Move();
-        if(success) ++curPosition[1];
+/**
+ * // This is the robot's control interface.
+ * // You should not implement it, or speculate about its implementation
+ * interface Robot {
+ *     // Returns true if the cell in front is open and robot moves into the cell.
+ *     // Returns false if the cell in front is blocked and robot stays in the current cell.
+ *     public boolean move();
+ *
+ *     // Robot will stay in the same cell after calling turnLeft/turnRight.
+ *     // Each turn will be 90 degrees.
+ *     public void turnLeft();
+ *     public void turnRight();
+ *
+ *     // Clean the current cell.
+ *     public void clean();
+ * }
+ */
+ //Time O(N^2) Space O(N^2)
+class Solution {
+    private int[][] dirs = new int[][]{{-1,0},{0,1},{1,0},{0,-1}};
+    private int[] turns = new int[]{0,1,2,3};
+    public void cleanRoom(Robot robot) {
+        HashSet<String> visited = new HashSet<String>(){{
+            add(new String("0,0"));
+        }};
+        dfs(visited,0,0,robot);
     }
-
-    boolean MoveLeft(){
-        // actions.push("Left");
-
-        TurnLeft(1);
-        boolean success = Move();
-        if(success) --curPosition[0];
-        TurnRight(1);
-        return success;
-    }
-
-    boolean MoveRight(){
-        // actions.push("Right");
-        TurnRight(1);
-        boolean success = Move();
-        if(success) ++curPosition[0];. From 1point 3acres bbs
-        TurnLeft(1);
-        return success;
-    }
-
-    // explore new space
-    boolean Actuator(String direction){
-        if(direction.equals("Forward")){
-            actions.push(direction);
-            return MoveForward();
-        }
-        if(direction.equals("Left")) {
-            actions.push(direction);
-            return MoveLeft();
-        }
-        if(direction.equals("Right")){
-            actions.push(direction);
-            return MoveRight();
-        }
-        return false;
-    }
-    // return to the previous position
-    boolean Return(){
-        String lastAction = stack.pop();
-        if(lastAction.equals("Left")) return MoveRight();
-        if(lastAction.equals("Right")) return MoveLeft();
-        if(lastAction.equals("Forward")) return MoveBackforward();
-    }
-
-    // main function
-    boolean Solver(Robot robot){
-
-        String posStr = posStr = curPosition[0] + "," + curPosition[1];
-        visited.add(posStr);
-        Clean();
-        plans.push("Forward");
-        plans.push("Left");
-        plans.push("Right");
-        while(!plans.empty()){
-            String plan = plans.pop();
-            if(!Actuator(plan)) {
-                actions.pop();
-                continue;
-            }
-            posStr = curPosition[0] + "," + curPosition[1];
-            if(!visited.contains(posStr)){
-                Clean();
-                visited.add(posStr);
-                plans.push("Forward");
-                plans.push("Left");
-                plans.push("Right");
-            }else{
-                Return();
+    private void dfs(HashSet<String> visited, int x, int y, Robot robot) {
+        robot.clean();
+        for(int i = 0; i < 4; i++) {
+            if(i != 0) robot.turnRight();
+            int nx = x + dirs[i][0];
+            int ny = y + dirs[i][1];
+            if(visited.add(new String(nx+","+ny)) && robot.move()) {
+                for(int j = 0; j < turns[i];j++) robot.turnLeft(); //Make sure the robot face the north
+                dfs(visited,nx,ny,robot);
+                for(int j = 0 ; j < turns[i];j++) robot.turnRight(); //Make sure the robot stays the same position when last step reach current step
+                //Coming back face toword the direction from last standing point
+                robot.turnRight();robot.turnRight();
+                robot.move();
+                robot.turnRight();robot.turnRight();
             }
         }
-        return true;
+        robot.turnRight();
     }
-
 }
