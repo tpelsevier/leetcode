@@ -1,4 +1,4 @@
-//Time O(N) Space O(1)
+//Time O(N) Space O(N)
 class Solution {
     public int[] sumOfDistancesInTree(int N, int[][] edges) {
         int[] ans = new int[N];
