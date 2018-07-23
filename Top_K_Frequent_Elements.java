@@ -20,3 +20,30 @@ class Solution {
         return res;
     }
 }
+
+
+//Time O(N) Space O(N)
+class Solution {
+    public List<Integer> topKFrequent(int[] nums, int k) {
+        HashMap<Integer,Integer> map = new HashMap<>();
+        for(int n: nums) {
+            map.put(n,map.getOrDefault(n,0)+1);
+        }
+        List<Integer>[] bucket = new List[nums.length+1]; //Store them in a bucket
+        for(Map.Entry<Integer,Integer> set: map.entrySet()) {
+            int fre = set.getValue();
+            if(bucket[fre] == null) bucket[fre] = new ArrayList<>();
+            bucket[fre].add(set.getKey());
+        }
+        List<Integer> ls = new ArrayList<>();
+        int n = nums.length+1;
+        while(n--> 0 && ls.size() < k){
+            if(bucket[n] == null) continue;
+            for(int ne: bucket[n]) {
+                ls.add(ne);
+                if(ls.size() == k) return ls;
+            }
+        }
+        return ls;
+    }
+}
